@@ -61,7 +61,9 @@ class ST_Twitter extends WP_Widget {
 				<input type="checkbox" 
 					id="<?php echo $this->get_field_id('twitter_button'); ?>"
 					name="<?php echo $this->get_field_name('twitter_button'); ?>" 
-					<?php echo ($twitter_button) ? "checked" : ""; ?>
+					<?php if(isset($twitter_button)) : ?>
+						<?php echo ($twitter_button) ? "checked" : ""; ?>
+					<?php endif; ?>
 					/>
 					"Folgen" Button anzeigen?
 			</label>
@@ -110,7 +112,7 @@ class ST_Twitter extends WP_Widget {
 				setlocale(LC_ALL, 'de_DE');
 				$date = strftime($twitter_dateformat, strtotime($tweet->created_at));
 
-				$new_text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $tweet->text);
+				$new_text = preg_replace("/[[:alpha:]]+:\/\/[^<>[:space:]]+[[:alnum:]\/]/","<a href=\"\\0\">\\0</a>", $tweet->text);
 				echo "<li class='st-tweet'><span class='st-tweet-date'>" . $date . "</span><p>" . $new_text . "</p></li>";
 			}
 
