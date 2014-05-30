@@ -1,10 +1,9 @@
 <?php
-error_reporting(E_ALL);
 /**
  * Plugin Name: ST Widgets - Twitter
  * Plugin URI: http://stinformatik.eu
  * Description: Displays latest Tweets from a given Twitter User
- * Version: 0.5
+ * Version: 0.6
  * Author: Johannes Reß
  * Author URI: http://johannesress.com
  * License: No licensing
